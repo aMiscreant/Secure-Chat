@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; style-src 'self'; frame-ancestors 'none'; base-uri 'self';">
+    <meta name="referrer" content="no-referrer">
+</head>
+<body>
+    <h1>Chat</h1>
+    <form action="/chat" method="post">
+        <input type="text" name="message" required placeholder="Type your message here...">
+        <button type="submit">Send</button>
+    </form>
+
+    <h2>Messages</h2>
+    <ul>
+        {% for message, timestamp in messages %}
+            <li>
+                <strong>{{ timestamp }}:</strong> {{ message }}
+                <a href="{{ url_for('delete_message', msg_index=loop.index0) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+                  </html>
