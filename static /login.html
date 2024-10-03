@@ -1,1 +1,24 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; style-src 'self'; frame-ancestors 'none'; base-uri 'self';">
+    <meta name="referrer" content="no-referrer">
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        {{ form.hidden_tag() }}  <!-- CSRF Token -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required autocomplete="off">
+        <label for="captcha">Enter the text from the image:</label>
+        <img src="/generate-captcha" alt="CAPTCHA Image">
+        <input type="text" id="captcha" name="captcha" required>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
